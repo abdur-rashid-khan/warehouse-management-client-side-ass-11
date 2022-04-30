@@ -6,7 +6,7 @@ import Product from '../product/Product';
 
 const Products = () => {
   const {products , setProducts} =ProductsHook();
-  const sliceProducts = products.slice(0,12);
+  const sliceProducts = products.slice(0,6);
   return (
     <div className="container mx-auto px-2 py-10">
       <h1 className='pb-10 text-3xl text-center font-serif font-bold'>Preserved products</h1>
@@ -16,7 +16,7 @@ const Products = () => {
         }
       </div>
       <div className="text-center">
-      <Link to={'/products'} className='text-lg bg-blue-700 p-2 text-slate-100 rounded px-8'>see more <span><ArrowRightIcon style={{width:'25px',height:'25px',display:'inline-block'}} /></span></Link>
+      <Link to={'/inventories'} className='text-lg bg-blue-700 p-2 text-slate-100 rounded px-8'>see more <span><ArrowRightIcon style={{width:'25px',height:'25px',display:'inline-block'}} /></span></Link>
       </div>
     </div>
     

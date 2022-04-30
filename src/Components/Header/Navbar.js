@@ -1,11 +1,27 @@
 
-import { Fragment } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { Disclosure} from '@headlessui/react'
 import {MenuIcon, XIcon } from '@heroicons/react/outline'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from '../../logo.png'
+import auth from '../../firebase.init';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { signOut } from 'firebase/auth';
+import Swal from 'sweetalert2';
 
 const Navbar = () => {
+  const navigate= useNavigate()
+  const [user, loading, error] = useAuthState(auth);
+    // for alert
+
+  const logout = () => {
+    signOut(auth);
+    Swal.fire(
+      '',
+      'LogOut Success',
+      'success'
+    )
+  };
   return (
     <div >
           <Disclosure as="nav" className="bg-gray-800 fixed w-full">
@@ -36,7 +52,7 @@ const Navbar = () => {
                 <div className="hidden md:block md:ml-6">
                   <div className="flex space-x-4 mt-14 ">
                     <Link className='text-slate-100' to={'/home'}> Home </Link>
-                    <Link className='text-slate-100' to={'/manage-inventories'}> Manage Inventories </Link>
+                    <Link className='text-slate-100' to={'/inventories'}> Inventories </Link>
                     <Link className='text-slate-100' to={'/manage-products'}> Manage Products </Link>
                     <Link className='text-slate-100' to={'/add-products'}> Add Products </Link>
                     <Link className='text-slate-100 md:hidden lg:block' to={'/my-items'}> My Items </Link>
@@ -45,7 +61,10 @@ const Navbar = () => {
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <button className='text-slate-200 pr-2'>logout</button>
+                {
+                  user? <button onClick={()=>logout()} className='text-slate-200 pr-2'>logOut</button> : 
+                  <Link to={'/login'} className='text-slate-200 pr-2'>login</Link>
+                }
               </div>
             </div>
           </div>
@@ -53,7 +72,7 @@ const Navbar = () => {
           <Disclosure.Panel className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 inline-grid">
               <Link className='text-slate-100' to={'/home'}> Home </Link>
-              <Link className='text-slate-100' to={'/manage-inventories'}> Manage Inventories </Link>
+              <Link className='text-slate-100' to={'/inventories'}> Inventories </Link>
               <Link className='text-slate-100' to={'/manage-products'}> Manage Products </Link>
               <Link className='text-slate-100' to={'/add-products'}> Add Products </Link>
               <Link className='text-slate-100 md:hidden lg:block' to={'/my-items'}> My Items </Link>

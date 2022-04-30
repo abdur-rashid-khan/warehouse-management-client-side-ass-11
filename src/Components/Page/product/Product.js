@@ -1,7 +1,6 @@
 import React from 'react';
 
 const Product = ({data}) => {
-  console.log(data)
   const {img , title , about , price} = data;
 
   return (
