@@ -1,0 +1,31 @@
+#banner{
+  width: 100%;
+  height: auto;
+  background-color: #03A4F4;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+}
+@media only screen and (max-width:767px) {
+  #banner{
+    display: block;
+    
+  }
+  #banner-img-up{
+    padding-bottom: 2rem;
+  }
+  #banner-img{
+    display: none;
+  }
+}
+@media only screen and (min-width:768px) {
+  #banner-img-up{
+    display: none;
+  }
+  #banner{
+    display: grid;
+    
+  }
+}
