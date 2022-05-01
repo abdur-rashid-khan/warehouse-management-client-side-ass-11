@@ -4,6 +4,7 @@ import gitIcon from  '../../../icon/git.png'
 import { useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const LoginWithOtherAccount = () => {
   const navigate = useNavigate();
@@ -18,6 +19,11 @@ const LoginWithOtherAccount = () => {
   if(user || GitUser){
     alert('login successfully');
     navigate('/home');
+    Swal.fire(
+      '',
+      'login success',
+      'success'
+    )
   }
   let loadingMaess ;
   if(loading || GitLoading){
