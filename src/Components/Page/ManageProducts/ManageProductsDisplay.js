@@ -7,18 +7,18 @@ const ManageProductsDisplay = ({data}) => {
   const{img , title,price} = data;
   return (
     <div className='bg-slate-200 my-4 p-2'>
-      <div className="flex items-center content-center justify-center" >
-        <div className="img"  style={{width:'150px',height:"auto"}}>
-          <img className='rounded' src={img} alt="" />
+      <div className="grid lg:grid-cols-3  md:grid-cols-3 sm:grid-cols-1 items-center justify-items-center" >
+        <div className="md:w-6/12 sm:w-full" style={{height:'200px'}}>
+          <img className='rounded' src={img} alt="" style={{height:'100%'}}/>
         </div>
-        <div className="text-left  mx-6">
+        <div className="py-4">
           <strong>{title}</strong>
           <p>${price}</p>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates repellendus architecto delectus suscipit. Excepturi a molestiae consequatur vitae, e</p>
+          <p>Lorem ipsum dolor sit consequatur vitae, e</p>
         </div>
-        <div className="">
-          <PencilAltIcon className='my-4 cursor-pointer' style={{width:'30px',color:"#3CA0F3",height:'auto',}}/>
-          <TrashIcon className='my-4 cursor-pointer' style={{width:'30px',color:"red",height:'auto',}}/>
+        <div className="flex ms:inline">
+          <PencilAltIcon className='py-2 mx-4 ' style={{width:'30px',color:"#3CA0F3",height:'auto',}}/>
+          <TrashIcon className='py-2 mx-4 ' style={{width:'30px',color:"red",height:'auto',}}/>
         </div>
       </div>
     </div>
