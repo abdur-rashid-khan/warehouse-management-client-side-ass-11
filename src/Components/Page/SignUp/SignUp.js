@@ -1,14 +1,18 @@
 
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useState } from 'react';
-import {Swal} from 'sweetalert2';
 import LoginWithOtherAccount from '../anatherAccountWithLogin/LoginWithOtherAccount';
+import Swal from 'sweetalert2';
 
 const SignUp = () => {
-  const [passAlert , setPassAlert] = useState('') 
-  const navigate= useNavigate()
+  
+  const location = useLocation();
+  const navigate = useNavigate();
+  let from = location.state?.from?.pathname || '/';
+
+  const [passAlert , setPassAlert] = useState('');
   const [remember , setRemember] = useState(false);
 
   const rememberBtn = e =>{
@@ -44,12 +48,13 @@ const SignUp = () => {
     return <p>Loading...</p>;
   }
   if (user) {
-    navigate('/login');
+    navigate(from,{replace:true});
     Swal.fire(
       '',
       'check your email and active account',
       'success'
     )
+    
   }
 
   return (

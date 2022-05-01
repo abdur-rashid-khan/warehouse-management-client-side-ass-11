@@ -1,13 +1,15 @@
 import LoginWithOtherAccount from '../../Page/anatherAccountWithLogin/LoginWithOtherAccount'
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import './Login.css'
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
-import Swal from 'sweetalert2';
+import {Swal} from 'sweetalert2';
 
+import './Login.css'
 const Login = () => {
+  const location = useLocation();
   const navigate = useNavigate();
+  let from = location.state?.from?.pathname || '/';
   const [
     signInWithEmailAndPassword,
     user,
@@ -22,7 +24,7 @@ const Login = () => {
     await signInWithEmailAndPassword(email, password);
   }
   if(user){
-    navigate('/home');
+    navigate(from,{replace:true});
     Swal.fire(
       '',
       'check your email and active account',

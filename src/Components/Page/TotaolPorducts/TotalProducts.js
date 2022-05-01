@@ -1,5 +1,5 @@
 import React from 'react';
-import ProductsHook from '../../Hooks/ProductsHook';
+import ProductsHook from '../../Hooks/Products/ProductsHook';
 import DisplayTotalProducts from './DisplayTotalProducts';
 
 const TotalProducts = () => {

@@ -6,8 +6,9 @@ import Home from './Components/Page/Home/Home';
 import Login from './Components/Page/Login/Login';
 import RequireAuth from './Components/Page/RequireAuth/RequireAuth';
 import SignUp from './Components/Page/SignUp/SignUp';
-
+import SingleProduct from './Components/Page/SingleProduct/SingleProduct';
 import TotalProducts from './Components/Page/TotaolPorducts/TotalProducts';
+import ManageProducts from './Components/Page/ManageProducts/ManageProducts';
 
 function App() {
   return (
@@ -19,6 +20,16 @@ function App() {
         <Route path="/inventories" element={
           <RequireAuth>
             <TotalProducts />
+          </RequireAuth>
+        } />
+        <Route path="/product/:id" element={
+          <RequireAuth>
+            <SingleProduct />
+          </RequireAuth>
+        } />
+        <Route path="/manage-products" element={
+          <RequireAuth>
+            <ManageProducts />
           </RequireAuth>
         } />
         <Route path="/login" element={<Login />} />

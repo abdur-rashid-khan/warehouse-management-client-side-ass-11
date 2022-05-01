@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
-const DisplayTotalProducts = ({data}) => {
-  const {img , title , about , price , _id} = data;
+const SingleProduct = () => {
+  const [product , setProduct] = useState([]);
+  const {id}= useParams()
+  useEffect(()=>{
+    fetch(`http://localhost:5000/products/${id}`)
+    .then(res => res.json())
+    .then(data => setProduct(data))
+  },[]);
+  const {img , title , about , price , _id} = product;
   return (
-    <div >
+    <div className='container mx-auto px-4 grid grid-cols-3 gap-6' style={{paddingTop:'5rem'}}>
       <div className="bg-slate-100 border-2 rounded-lg">
         <img className='' style={{width:'100%',height:'300px'}} src={img} alt="" />
         <div className="p-2">
@@ -18,4 +25,4 @@ const DisplayTotalProducts = ({data}) => {
   );
 };
 
-export default DisplayTotalProducts;
+export default SingleProduct;

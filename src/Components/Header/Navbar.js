@@ -1,5 +1,3 @@
-
-import { Fragment, useEffect, useState } from 'react'
 import { Disclosure} from '@headlessui/react'
 import {MenuIcon, XIcon } from '@heroicons/react/outline'
 import { Link, useNavigate } from 'react-router-dom';
@@ -8,6 +6,7 @@ import auth from '../../firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { signOut } from 'firebase/auth';
 import Swal from 'sweetalert2';
+import CustomLink from '../Active/CustomLink';
 
 const Navbar = () => {
   const navigate= useNavigate()
@@ -16,6 +15,7 @@ const Navbar = () => {
 
   const logout = () => {
     signOut(auth);
+    navigate('/login')
     Swal.fire(
       '',
       'LogOut Success',
@@ -24,7 +24,7 @@ const Navbar = () => {
   };
   return (
     <div >
-          <Disclosure as="nav" className="bg-gray-800 fixed w-full">
+          <Disclosure as="nav" className="bg-gray-800 fixed w-full border-b">
       {({ open }) => (
         <>
           <div className="container m-auto px-2">
@@ -51,12 +51,12 @@ const Navbar = () => {
                 </div>
                 <div className="hidden md:block md:ml-6">
                   <div className="flex space-x-4 mt-14 ">
-                    <Link className='text-slate-100' to={'/home'}> Home </Link>
-                    <Link className='text-slate-100' to={'/inventories'}> Inventories </Link>
-                    <Link className='text-slate-100' to={'/manage-products'}> Manage Products </Link>
-                    <Link className='text-slate-100' to={'/add-products'}> Add Products </Link>
-                    <Link className='text-slate-100 md:hidden lg:block' to={'/my-items'}> My Items </Link>
-                    <Link className='text-slate-100' to={'/blog'}> Blog </Link>
+                    <CustomLink className='text-slate-100' to={'/home'}> Home </CustomLink>
+                    <CustomLink className='text-slate-100' to={'/inventories'}> Inventories </CustomLink>
+                    <CustomLink className='text-slate-100' to={'/manage-products'}> Manage Products </CustomLink>
+                    <CustomLink className='text-slate-100' to={'/add-products'}> Add Products </CustomLink>
+                    <CustomLink className='text-slate-100 md:hidden lg:block' to={'/my-items'}> My Items </CustomLink>
+                    <CustomLink className='text-slate-100' to={'/blog'}> Blog </CustomLink>
                   </div>
                 </div>
               </div>
@@ -71,12 +71,12 @@ const Navbar = () => {
 
           <Disclosure.Panel className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 inline-grid">
-              <Link className='text-slate-100' to={'/home'}> Home </Link>
-              <Link className='text-slate-100' to={'/inventories'}> Inventories </Link>
-              <Link className='text-slate-100' to={'/manage-products'}> Manage Products </Link>
-              <Link className='text-slate-100' to={'/add-products'}> Add Products </Link>
-              <Link className='text-slate-100 md:hidden lg:block' to={'/my-items'}> My Items </Link>
-              <Link className='text-slate-100' to={'/blog'}> Blog </Link>
+            <CustomLink className='text-slate-100 mt-5 block' to={'/home'}> Home </CustomLink>
+                    <CustomLink className='text-slate-100' to={'/inventories'}> Inventories </CustomLink>
+                    <CustomLink className='text-slate-100' to={'/manage-products'}> Manage Products </CustomLink>
+                    <CustomLink className='text-slate-100' to={'/add-products'}> Add Products </CustomLink>
+                    <CustomLink className='text-slate-100 md:hidden lg:block' to={'/my-items'}> My Items </CustomLink>
+                    <CustomLink className='text-slate-100' to={'/blog'}> Blog </CustomLink>
             </div>
           </Disclosure.Panel>
         </>

@@ -15,7 +15,7 @@ const Slider = () => {
           <p className='py-6'>
           Here you will find the best quality wholesale products at low prices . And if you are a fan of dealership, you will get many more benefits . If you want to make a deal then ....
           </p>
-          <a href='#deals' className='text-lg bg-blue-700 p-2 text-slate-100 rounded px-8'>Deal Now<span><ArrowRightIcon style={{width:'25px',height:'25px',display:'inline-block',paddingLeft:'5px'}} /></span></a>
+          <a href='#deals' className='text-lg bg-blue-700 hover:bg-blue-600 p-2 text-slate-100 rounded px-8'>Deal Now<span><ArrowRightIcon style={{width:'25px',height:'25px',display:'inline-block',paddingLeft:'5px'}} /></span></a>
       </div>
       <div id="banner-img">
         <img src={banner} alt="" />

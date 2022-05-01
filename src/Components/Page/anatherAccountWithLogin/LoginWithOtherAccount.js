@@ -3,11 +3,15 @@ import googleIcon from  '../../../icon/google.png'
 import gitIcon from  '../../../icon/git.png'
 import { useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const LoginWithOtherAccount = () => {
+
+  const location = useLocation();
   const navigate = useNavigate();
+  let from = location.state?.from?.pathname || '/';
+
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
   const [signInWithGithub, GitUser, GitLoading, GitError] = useSignInWithGithub(auth);
   const googleLogIn =()=>{
@@ -16,9 +20,9 @@ const LoginWithOtherAccount = () => {
   const gitLogIn =()=>{
     signInWithGithub()
   }
+  
   if(user || GitUser){
-    alert('login successfully');
-    navigate('/home');
+    navigate(from,{replace:true});
     Swal.fire(
       '',
       'login success',
