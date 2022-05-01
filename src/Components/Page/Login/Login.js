@@ -1,9 +1,40 @@
 import LoginWithOtherAccount from '../../Page/anatherAccountWithLogin/LoginWithOtherAccount'
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Login.css'
+import auth from '../../../firebase.init';
+import Swal from 'sweetalert2';
 
 const Login = () => {
+  const navigate = useNavigate();
+  const [
+    signInWithEmailAndPassword,
+    user,
+    loading,
+    error,
+  ] = useSignInWithEmailAndPassword(auth);
+  const login = async(e)=>{
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    console.log(email , password)
+    await signInWithEmailAndPassword(email, password);
+  }
+  if(user){
+    navigate('/home');
+    Swal.fire(
+      '',
+      'check your email and active account',
+      'success'
+    )
+    
+  }
+  let errorMes1  ;
+  if (error) {
+    errorMes1 = error.message;
+    console.log(error.message);
+  }
   return (
     <div className='container mx-auto px-4'>
       <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
@@ -12,7 +43,7 @@ const Login = () => {
             <img className="mx-auto h-20 w-auto" src="https://i.ibb.co/9G9ZSvK/image-removebg-preview-3.png" alt="" />
             
           </div>
-          <form className="mt-8 space-y-6" >
+          <form onSubmit={login} className="mt-8 space-y-6" >
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="rounded-md shadow-sm -space-y-px">
               <div className='pt-5'>
@@ -75,6 +106,11 @@ const Login = () => {
               <Link className='text-blue-700 mt-5 inline-block' to={'/signup'}>create a new account ?</Link>
             </div>
           </form>
+          <p>
+            {
+              errorMes1
+            }
+          </p>
           <LoginWithOtherAccount/>
         </div>
       </div>
