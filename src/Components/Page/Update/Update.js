@@ -1,9 +1,44 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const Update = () => {
+  const [product , setProduct] = useState([]);
+  const {id}= useParams()
+  useEffect(()=>{
+    fetch(`http://localhost:5000/products/${id}`)
+    .then(res => res.json())
+    .then(data => setProduct(data))
+  },[]);
+  const {img , title , about , price , _id} = product;
+
   const submit = (e)=>{
     e.preventDefault();
-    console.log('clicked submit button');
+    const title = e.target.productName.value;
+    const productsNumber = e.target.productsNumber.value;
+    const suppler = e.target.suppler.value;
+    const  img= e.target.photoUrl.value;
+    const price = e.target.price.value;
+    const about = e.target.productDetails.value;
+    const data ={title,productsNumber,suppler,img,price,about };
+    fetch(`http://localhost:5000/products/${id}`,{
+      method:'PUT',
+      headers:{
+        'content-type':'application/json'
+      },
+      body:JSON.stringify(data)
+    })
+    .then(res => res.json())
+    .then(data => {
+      if(data){
+        Swal.fire(
+          '',
+          'updating success',
+          'success'
+        )
+      e.target.reset();
+      }
+    })
   }
   return (
     <div className='container mx-auto px-4'>
@@ -27,7 +62,7 @@ const Update = () => {
                   type="text"
                   required
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                  placeholder="Product Name"
+                  placeholder={title}
                 />
               </div>
               <div className='pt-3'>
@@ -41,7 +76,7 @@ const Update = () => {
                   type="text"
                   required
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                  placeholder="How many products ?"
+                  placeholder={about}
                 />
               </div>
               <div className='pt-3'>
@@ -68,7 +103,7 @@ const Update = () => {
                   type="text"
                   required
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                  placeholder="Photo url"
+                  placeholder={img}
                 />
               </div>
               <div className='pt-3'>
@@ -81,7 +116,7 @@ const Update = () => {
                   type="text"
                   required
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                  placeholder="Price"
+                  placeholder={price}
                 />
               </div>
 
@@ -96,7 +131,7 @@ const Update = () => {
                   type="text"
                   required
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                  placeholder="Product Details"  cols="3" rows="3">
+                  placeholder={about}  cols="3" rows="3">
                   </textarea>
               </div>
             </div>

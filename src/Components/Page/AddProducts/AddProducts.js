@@ -1,4 +1,5 @@
 import React from 'react';
+import Swal from 'sweetalert2';
 const submit = (e)=>{
   e.preventDefault();
   const title = e.target.productName.value;
@@ -19,8 +20,11 @@ const submit = (e)=>{
   .then(res => res.json())
   .then(data => {
     if(data){
-      console.log(data)
-    alert('Data added')
+      Swal.fire(
+        '',
+        'Data add success',
+        'success'
+      )
     e.target.reset();
     }
   })
