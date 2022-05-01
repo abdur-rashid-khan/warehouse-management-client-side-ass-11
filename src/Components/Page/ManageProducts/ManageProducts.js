@@ -4,7 +4,6 @@ import ManageProductsDisplay from './ManageProductsDisplay';
 
 const ManageProducts = () => {
   const {products , setProducts}= ProductsHook();
-  console.log(products)
   return (
     <div className='container mx-auto px-4'>
       <div className="pt-20">

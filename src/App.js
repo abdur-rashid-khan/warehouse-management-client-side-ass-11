@@ -9,6 +9,8 @@ import SignUp from './Components/Page/SignUp/SignUp';
 import SingleProduct from './Components/Page/SingleProduct/SingleProduct';
 import TotalProducts from './Components/Page/TotaolPorducts/TotalProducts';
 import ManageProducts from './Components/Page/ManageProducts/ManageProducts';
+import AddProducts from './Components/Page/AddProducts/AddProducts';
+import Update from './Components/Page/Update/Update';
 
 function App() {
   return (
@@ -30,6 +32,16 @@ function App() {
         <Route path="/manage-products" element={
           <RequireAuth>
             <ManageProducts />
+          </RequireAuth>
+        } />
+        <Route path="/add-products" element={
+          <RequireAuth>
+            <AddProducts />
+          </RequireAuth>
+        } />
+        <Route path="/update" element={
+          <RequireAuth>
+            <Update/>
           </RequireAuth>
         } />
         <Route path="/login" element={<Login />} />

@@ -53,9 +53,18 @@ const Navbar = () => {
                   <div className="flex space-x-4 mt-14 ">
                     <CustomLink className='text-slate-100' to={'/home'}> Home </CustomLink>
                     <CustomLink className='text-slate-100' to={'/inventories'}> Inventories </CustomLink>
-                    <CustomLink className='text-slate-100' to={'/manage-products'}> Manage Products </CustomLink>
-                    <CustomLink className='text-slate-100' to={'/add-products'}> Add Products </CustomLink>
-                    <CustomLink className='text-slate-100 md:hidden lg:block' to={'/my-items'}> My Items </CustomLink>
+
+
+                    {
+                      user?
+                      <>
+                        <CustomLink className='text-slate-100' to={'/manage-products'}> Manage Products </CustomLink>
+                        <CustomLink className='text-slate-100' to={'/add-products'}> Add Products </CustomLink>
+                        <CustomLink className='text-slate-100 md:hidden lg:block' to={'/my-items'}> My Items </CustomLink>
+                      </> : <></>
+                    }
+
+
                     <CustomLink className='text-slate-100' to={'/blog'}> Blog </CustomLink>
                   </div>
                 </div>

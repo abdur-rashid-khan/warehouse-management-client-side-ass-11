@@ -13,7 +13,9 @@ const SingleProduct = () => {
   return (
     <div className='container mx-auto px-4 grid grid-cols-3 gap-6' style={{paddingTop:'5rem'}}>
       <div className="bg-slate-100 border-2 rounded-lg">
-        <img className='' style={{width:'100%',height:'300px'}} src={img} alt="" />
+        <div  style={{height:'300px'}}>
+        <img className='' style={{height:'100%',margin:'auto'}} src={img} alt="" />
+        </div>
         <div className="p-2">
           <h2 >{title}</h2>
           <strong>{price}</strong>
