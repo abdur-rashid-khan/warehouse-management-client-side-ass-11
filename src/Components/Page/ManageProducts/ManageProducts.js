@@ -17,6 +17,7 @@ const ManageProducts = () => {
               if( data.deletedCount > 0){
                 const newData = products.filter(p => p._id !== id);
                 setProducts(newData);
+                
                 Swal.fire(
                   '',
                   'Delete success',

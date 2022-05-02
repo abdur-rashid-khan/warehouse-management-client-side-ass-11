@@ -6,6 +6,7 @@ import auth from '../../../firebase.init';
 import {Swal} from 'sweetalert2';
 
 import './Login.css'
+import axios from 'axios';
 const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -20,8 +21,9 @@ const Login = () => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    console.log(email , password)
     await signInWithEmailAndPassword(email, password);
+    const {data} = await axios.post('http://localhost:5000/login',{email});
+      localStorage.setItem('accessToken',data)
   }
   if(user){
     navigate(from,{replace:true});
@@ -35,7 +37,6 @@ const Login = () => {
   let errorMes1  ;
   if (error) {
     errorMes1 = error.message;
-    console.log(error.message);
   }
   return (
     <div className='container mx-auto px-4'>

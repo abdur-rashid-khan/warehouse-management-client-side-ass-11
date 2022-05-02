@@ -11,6 +11,8 @@ import TotalProducts from './Components/Page/TotaolPorducts/TotalProducts';
 import ManageProducts from './Components/Page/ManageProducts/ManageProducts';
 import AddProducts from './Components/Page/AddProducts/AddProducts';
 import Update from './Components/Page/Update/Update';
+import Error from './Components/Page/Error/Error';
+import MyItems from './Components/Page/MyItems/MyItems';
 
 function App() {
   return (
@@ -44,9 +46,15 @@ function App() {
             <Update/>
           </RequireAuth>
         } />
+        <Route path="/my-items" element={
+          <RequireAuth>
+            <MyItems/>
+          </RequireAuth>
+        } />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/password-forgot" element={<Forgot />} />
+        <Route path="*" element={<Error />} />
       </Routes>
     </>
   );

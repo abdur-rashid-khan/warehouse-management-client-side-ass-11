@@ -48,7 +48,7 @@ const SignUp = () => {
     return <p>Loading...</p>;
   }
   if (user) {
-    navigate(from,{replace:true});
+    navigate('/login');
     Swal.fire(
       '',
       'check your email and active account',
