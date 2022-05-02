@@ -13,6 +13,7 @@ import AddProducts from './Components/Page/AddProducts/AddProducts';
 import Update from './Components/Page/Update/Update';
 import Error from './Components/Page/Error/Error';
 import MyItems from './Components/Page/MyItems/MyItems';
+import Blog from './Components/Page/Blog/Blog';
 
 function App() {
   return (
@@ -54,6 +55,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/password-forgot" element={<Forgot />} />
+        <Route path="/blog" element={<Blog />} />
         <Route path="*" element={<Error />} />
       </Routes>
     </>
