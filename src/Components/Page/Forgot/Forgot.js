@@ -1,16 +1,29 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import auth from '../../../firebase.init';
+import { useSendPasswordResetEmail } from 'react-firebase-hooks/auth';
+import Swal from 'sweetalert2';
 
 const Forgot = () => {
+  const [sendPasswordResetEmail, sending, error] = useSendPasswordResetEmail(auth);
+  const resetPassword =(e)=>{
+    e.preventDefault();
+    const email = e.target.email.value;
+    sendPasswordResetEmail(email);
+    Swal.fire(
+      '',
+      'check your email and reset password',
+      'success'
+    )
+  }
   return (
     <div className='container mx-auto px-4'>
       <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div id='loginForm' className="max-w-md w-full space-y-8 bg-gray-200 p-6">
-          <div>
-            <img className="mx-auto h-20 w-auto" src="https://i.ibb.co/9G9ZSvK/image-removebg-preview-3.png" alt="" />
-            
+          <div className='text-center'>
+            <h1 className='text-2xl font-serif' >Reset Password</h1>
           </div>
-          <form className="mt-8 space-y-6" >
+          <form onSubmit={resetPassword} className="mt-8 space-y-6" >
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="rounded-md shadow-sm -space-y-px">
               <div className='pt-3'>

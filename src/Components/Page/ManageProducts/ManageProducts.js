@@ -46,9 +46,9 @@ const ManageProducts = () => {
                 />
               </div>
               <div className="py-4">
-                <strong>{p.title}</strong>
-                <p>${p.price}</p>
-                <p>{p.about}</p>
+                <strong>{p.title.slice(0,45)}..</strong>
+                <p>Price : $ {p.price}</p>
+                <p>Product Details : {p.about.slice(0,80)}....</p>
               </div>
               <div className="flex ms:inline">
                 <Link to={`/update/${p._id}`}>

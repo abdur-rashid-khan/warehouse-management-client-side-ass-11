@@ -24,7 +24,7 @@ const Navbar = () => {
   };
   return (
     <div >
-          <Disclosure as="nav" className="bg-gray-800 fixed w-full border-b">
+          <Disclosure as="nav" className="bg-gray-800 fixed w-full border-b " style={{zIndex:"1111"}}>
       {({ open }) => (
         <>
           <div className="container m-auto px-2">
