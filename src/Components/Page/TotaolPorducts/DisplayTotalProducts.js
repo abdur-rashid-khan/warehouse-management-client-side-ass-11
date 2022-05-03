@@ -10,9 +10,9 @@ const DisplayTotalProducts = ({data}) => {
           <img className='' style={{height:'100%',margin:'auto'}} src={img} alt="" />
         </div>
         <div className="p-2">
-          <p >Name : <strong>{title.slice(0,25)}....</strong></p>
-          <p>price : $ <strong>{price}</strong></p>
-          <p className='py-2'>{about.slice(0,60)}......</p>
+          <p ><strong>{title.slice(0,28)}....</strong></p>
+          <strong className='py-2 block'>price : $ <strong>{price}</strong></strong>
+          <p className='py-2 text-slate-900'>{about.slice(0,60)}......</p>
         </div>
         <Link to={`/product/${_id}`} className='w-full bg-sky-500 py-2 rounded-b hover:bg-sky-600 block text-center'>select product</Link>
       </div>
