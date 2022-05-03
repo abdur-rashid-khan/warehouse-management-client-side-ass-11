@@ -6,7 +6,7 @@ const Update = () => {
   const [product , setProduct] = useState([]);
   const {id}= useParams()
   useEffect(()=>{
-    fetch(`http://localhost:5000/products/${id}`)
+    fetch(`https://stormy-mountain-16030.herokuapp.com/products/${id}`)
     .then(res => res.json())
     .then(data => setProduct(data))
   },[]);
@@ -21,7 +21,7 @@ const Update = () => {
     const price = e.target.price.value;
     const about = e.target.productDetails.value;
     const data ={title,productsNumber,suppler,img,price,about };
-    fetch(`http://localhost:5000/products/${id}`,{
+    fetch(`https://stormy-mountain-16030.herokuapp.com/products/${id}`,{
       method:'PUT',
       headers:{
         'content-type':'application/json'

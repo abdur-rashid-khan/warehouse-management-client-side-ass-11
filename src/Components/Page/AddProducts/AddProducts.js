@@ -10,7 +10,7 @@ const submit = (e)=>{
   const about = e.target.productDetails.value;
   const data ={title,productsNumber,suppler,img,price,about }
 
-  fetch('http://localhost:5000/products',{
+  fetch('https://stormy-mountain-16030.herokuapp.com/products',{
     method:'POST',
     headers:{
       'content-type':'application/json'

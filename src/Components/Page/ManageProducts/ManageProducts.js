@@ -9,7 +9,7 @@ const ManageProducts = () => {
       const deleteItem = (id) =>{
         const conform = window.confirm('Are Your Sure');
         if(conform){
-          fetch(`http://localhost:5000/products/${id}`,{
+          fetch(`https://stormy-mountain-16030.herokuapp.com/products/${id}`,{
             method:'DELETE',
             })
             .then((res) => res.json())

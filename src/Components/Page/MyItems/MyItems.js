@@ -13,7 +13,7 @@ const MyItems = () => {
   useEffect(() => {
     const getDelivery = async () => {
       const email = user.email;
-      const url = `http://localhost:5000/delivery?email=${email}`;
+      const url = `https://stormy-mountain-16030.herokuapp.com/delivery?email=${email}`;
       const { data } = await axios.get(url);
       setDelivery(data);
     };

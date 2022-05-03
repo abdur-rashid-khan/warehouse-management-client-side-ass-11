@@ -22,7 +22,7 @@ const Login = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
     await signInWithEmailAndPassword(email, password);
-    const {data} = await axios.post('http://localhost:5000/login',{email});
+    const {data} = await axios.post('https://stormy-mountain-16030.herokuapp.com/login',{email});
       localStorage.setItem('accessToken',data)
   }
   if(user){

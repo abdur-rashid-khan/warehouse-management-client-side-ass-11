@@ -14,7 +14,7 @@ const SingleProduct = () => {
   const [quantity, setQuantity] = useState(10);
   const { id } = useParams();
   useEffect(() => {
-    fetch(`http://localhost:5000/products/${id}`)
+    fetch(`https://stormy-mountain-16030.herokuapp.com/products/${id}`)
       .then((res) => res.json())
       .then((data) => setProduct(data));
   }, []);
@@ -48,7 +48,7 @@ const SingleProduct = () => {
       email
     };
     console.log(user.email)
-    fetch("http://localhost:5000/delivery", {
+    fetch("https://stormy-mountain-16030.herokuapp.com/delivery", {
       method: "POST",
       headers: {
         "content-type": "application/json",

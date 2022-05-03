@@ -4,7 +4,7 @@ import './ProductsHook'
 const ProductsHook = () => {
   const [products , setProducts] = useState([]);
   useEffect(()=>{
-    fetch('http://localhost:5000/products')
+    fetch('https://stormy-mountain-16030.herokuapp.com/products')
     .then(res => res.json())
     .then(data => setProducts(data))
   },[]);
